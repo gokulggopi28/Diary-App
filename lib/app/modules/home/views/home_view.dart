@@ -34,7 +34,7 @@ class HomeView extends GetView<HomeController> {
               final formattedTime =
                   DateFormat('h:mm a').format(dateTime); 
         
-              return Card(
+              return Card(             
                 color: const Color.fromARGB(255, 11, 46, 63),
                 margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                 child: ListTile(

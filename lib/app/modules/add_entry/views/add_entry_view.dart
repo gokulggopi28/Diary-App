@@ -25,6 +25,7 @@ class AddEntryView extends GetView<AddEntryController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Card(
+                color: const Color.fromARGB(255, 11, 46, 63),
                 elevation: 4,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -37,6 +38,7 @@ class AddEntryView extends GetView<AddEntryController> {
                       const Text(
                         "Title",
                         style: TextStyle(
+                          color: Colors.white,
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
@@ -45,6 +47,7 @@ class AddEntryView extends GetView<AddEntryController> {
                         controller: titleController,
                         decoration: const InputDecoration(
                           hintText: "Title",
+                           hintStyle: TextStyle(color: Colors.white), 
                           border: OutlineInputBorder(),
                         ),
                       ),
@@ -52,6 +55,7 @@ class AddEntryView extends GetView<AddEntryController> {
                       const Text(
                         "Content",
                         style: TextStyle(
+                          color: Colors.white,
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
@@ -61,7 +65,10 @@ class AddEntryView extends GetView<AddEntryController> {
                         maxLines: 5,
                         decoration: const InputDecoration(
                           hintText: "Write your thoughts here...",
-                          border: OutlineInputBorder(),
+                           hintStyle: TextStyle(color: Colors.white), 
+                          border: OutlineInputBorder(
+                            
+                          ),
                         ),
                       ),
                     ],
