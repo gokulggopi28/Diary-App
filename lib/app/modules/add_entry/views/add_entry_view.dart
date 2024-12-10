@@ -110,6 +110,7 @@ class AddEntryView extends GetView<AddEntryController> {
 
                     titleController.clear();
                     contentController.clear();
+                    Get.back();
                   },
                 ),
               ),
