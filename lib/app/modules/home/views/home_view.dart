@@ -42,7 +42,7 @@ class HomeView extends GetView<HomeController> {
                   entry['title'],
                   style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 16,
+                    fontSize: 16, 
                     fontWeight: FontWeight.bold,
                   ),
                 ),
