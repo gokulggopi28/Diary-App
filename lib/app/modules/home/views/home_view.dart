@@ -33,6 +33,7 @@ class HomeView extends GetView<HomeController> {
                 DateFormat('h:mm a').format(dateTime); 
 
             return Card(
+              color: const Color.fromARGB(255, 11, 46, 63),
               margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
               child: ListTile(
                 contentPadding:
@@ -40,6 +41,7 @@ class HomeView extends GetView<HomeController> {
                 title: Text(
                   entry['title'],
                   style: const TextStyle(
+                    color: Colors.white,
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),

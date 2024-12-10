@@ -8,7 +8,9 @@ class ViewEntryView extends GetView<ViewEntryController> {
   const ViewEntryView({super.key});
   @override
   Widget build(BuildContext context) {
+    
     final entry = Get.arguments;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
