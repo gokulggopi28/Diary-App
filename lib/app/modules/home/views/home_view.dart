@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart'; 
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -8,10 +9,15 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(),
+      drawer: const Drawer(),
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: const Text("My Diary")),
+        title: const Text(
+          "My Diary",
+          style: TextStyle(color: Colors.black),
+        ),
+        centerTitle: true,
+      ),
       body: Obx(() {
         if (controller.isLoading.value) {
           return const Center(child: CircularProgressIndicator());
@@ -20,13 +26,42 @@ class HomeView extends GetView<HomeController> {
           itemCount: controller.entries.length,
           itemBuilder: (context, index) {
             final entry = controller.entries[index];
-            return ListTile(
-              title: Text(entry['title']),
-              subtitle: Text(entry['date']),
-              onTap: () => Get.toNamed('/view-entry', arguments: entry),
-              trailing: IconButton(
-                icon: const Icon(Icons.delete),
-                onPressed: () => controller.deleteEntry(entry['id']),
+            final dateTime = DateTime.parse(entry['date']); 
+            final formattedDate =
+                DateFormat('MMM d, yyyy').format(dateTime);
+            final formattedTime =
+                DateFormat('h:mm a').format(dateTime); 
+
+            return Card(
+              margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              child: ListTile(
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                title: Text(
+                  entry['title'],
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Date: $formattedDate',
+                      style: const TextStyle(color: Colors.grey),
+                    ),
+                    Text(
+                      'Time: $formattedTime',
+                      style: const TextStyle(color: Colors.grey),
+                    ),
+                  ],
+                ),
+                onTap: () => Get.toNamed('/view-entry', arguments: entry),
+                trailing: IconButton(
+                  icon: const Icon(Icons.delete, color: Colors.redAccent),
+                  onPressed: () => controller.deleteEntry(entry['id']),
+                ),
               ),
             );
           },

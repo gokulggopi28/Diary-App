@@ -8,17 +8,54 @@ class ViewEntryView extends GetView<ViewEntryController> {
   const ViewEntryView({super.key});
   @override
   Widget build(BuildContext context) {
+    final entry = Get.arguments;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ViewEntryView'),
+        backgroundColor: Colors.white,
+        title: const Text('View Entry'),
         centerTitle: true,
       ),
-      body: const Center(
-        child: Text(
-          'ViewEntryView is working',
-          style: TextStyle(fontSize: 20),
+      body:Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(entry['title'] ?? "No Title", 
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold
+            ),),
+            const SizedBox(
+              height: 8,
+            ),
+            Row(
+              children: [
+                Icon(Icons.calendar_today, size: 18, color: Colors.grey,),
+                const SizedBox(
+                  width: 8,
+                ),
+                Text(entry['date'] ?? "UnKnown  Date",
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.grey
+                ))
+              ],
+            ),
+            SizedBox(
+              height: 16,
+            ),
+           Expanded(
+              child: SingleChildScrollView(
+                child: Text(
+                  entry['content'] ?? "No Content",
+                  style: const TextStyle(fontSize: 16),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
+      backgroundColor: Colors.white,
     );
   }
 }
