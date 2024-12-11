@@ -45,6 +45,7 @@ class AddEntryView extends GetView<AddEntryController> {
                       ),
                       TextField(
                         controller: titleController,
+                         style: const TextStyle(color: Colors.white),
                         decoration: const InputDecoration(
                           hintText: "Title",
                            hintStyle: TextStyle(color: Colors.white), 
@@ -62,6 +63,7 @@ class AddEntryView extends GetView<AddEntryController> {
                       ),
                       TextField(
                         controller: contentController,
+                         style: const TextStyle(color: Colors.white),
                         maxLines: 5,
                         decoration: const InputDecoration(
                           hintText: "Write your thoughts here...",
